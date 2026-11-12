@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Personal Portfolio • Nature Inspired</title>
+
+  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       PRESENTATION VIEWPORT
+       Presentasi Interaktif 4 Slide bertema Alam (Nature Theme)
+       ========================================================================== -->
+  <div class="presentation-viewport">
+
+    <!-- Canvas for Floating Falling Leaves (Efek Daun Berguguran) -->
+    <canvas id="leaf-canvas"></canvas>
+
+    <!-- Subtle Vignette Layer -->
+    <div class="viewport-overlay"></div>
+
+    <!-- ========================================================================
+         TOP HEADER BAR
+         ======================================================================== -->
+    <header class="site-header">
+      <div class="brand-badge">
+        <div class="brand-icon-box">
+          <!-- Leaf Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title user-name-text">Satria Kiyoshi Suprapto</div>
+          <div class="brand-subtitle">Nature Portfolio Journal</div>
+        </div>
+      </div>
+
+      <!-- Quick Action Controls -->
+      <div class="header-controls">
+        <!-- Ambient Forest Audio Generator Toggle -->
+        <button id="toggle-sound-btn" class="ctrl-btn" title="Aktifkan Suara Hutan Alami">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+          </svg>
+          <span class="audio-label">Forest Sound</span>
+        </button>
+
+        <!-- Floating Leaves Toggle -->
+        <button id="toggle-leaves-btn" class="ctrl-btn active" title="Nyalakan/Matikan Guguran Daun">
+          <span>🍃</span> Daun
+        </button>
+
+        <!-- Quick Profile Editor Drawer Button (Memudahkan Kamu Mengganti Foto & Teks langsung di Browser) -->
+        <button id="open-editor-btn" class="ctrl-btn edit-profile-btn" title="Ubah Nama, Kelas & Foto Diri Kamu Langsung">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+            <path d="m15 5 4 4"/>
+          </svg>
+          <span>Sesuaikan Profil</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ========================================================================
+         SLIDES CONTAINER (TRACK) - TEPAT 4 SLIDE
+         ======================================================================== -->
+    <main class="slides-track">
+
+      <!-- ======================================================================
+           SLIDE 1 – INTRODUCTION (Perkenalan Diri)
+           ====================================================================== -->
+      <section class="slide slide-1 active" id="slide-1" data-index="0" aria-label="Slide 1: Introduction">
+        <!-- Scenic Mountain & Forest Background -->
+        <div class="slide-bg"></div>
+
+        <div class="slide-content-container">
+          <div class="hero-grid">
+            
+            <!-- Left Column: Editorial Welcome & Bio -->
+            <div class="hero-text-card stagger-item delay-1">
+              <div class="pill-badge">
+                <span class="dot"></span>
+                <span>🌿 Welcome to My Serene Corner</span>
+              </div>
+
+              <div class="hero-greeting">Halo, selamat datang!</div>
+              
+              <!-- [GANTI JUDUL ATAU NAMA DI SINI] -->
+              <h1 class="hero-title">
+                Hello, I'm <br>
+                <span class="name-highlight user-name-text">Satria Kiyoshi Suprapto</span>
+              </h1>
+
+              <!-- Badges Info: Kelas & Minat -->
+              <div class="hero-meta-row stagger-item delay-2">
+                <div class="meta-chip">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                  </svg>
+                  <!-- [GANTI KELAS KAMU DI SINI] -->
+                  <span class="user-class-text">X TKJ 3</span>
+                </div>
+                <div class="meta-chip">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                  <span class="user-location-text">Malang, Jawa Timur</span>
+                </div>
+                <div class="meta-chip">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                  <span>Nature Enthusiast</span>
+                </div>
+              </div>
+
+              <!-- [GANTI DESKRIPSI SINGKAT DIRI SENDIRI DI SINI] -->
+              <p class="hero-description stagger-item delay-3 user-bio-text">
+                Selamat datang di ruang portofolio digital saya. Saya seorang pelajar dan pencinta keteduhan alam yang percaya bahwa proses belajar sama seperti sebutir benih: butuh kesabaran, tanah yang baik, dan sinar matahari untuk tumbuh menjadi pohon yang rindang dan memberi manfaat.
+              </p>
+
+              <!-- Call to Action Buttons -->
+              <div class="hero-action-group stagger-item delay-4">
+                <button class="btn-primary-nature" data-action="next-slide">
+                  <span>Jelajahi Tentang Saya</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
+                <button class="btn-secondary-nature" data-action="goto-slide" data-target-slide="3">
+                  <span>Hubungi Saya</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m22 2-7 20-4-9-9-4Z"/>
+                    <path d="M22 2 11 13"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Right Column: Personal Photo in Organic Nature Blob Frame -->
+            <div class="hero-photo-wrapper stagger-item delay-2">
+              
+              <!-- Floating Top Badge -->
+              <div class="floating-nature-badge top-left">
+                <div class="badge-icon-wrap">🌱</div>
+                <div>
+                  <div class="badge-text-primary">Pelajar Kreatif</div>
+                  <div class="badge-text-sub user-class-text">X TKJ 3</div>
+                </div>
+              </div>
+
+              <!-- [SLOT FOTO DIRI: Ganti link src gambar di bawah atau upload lewat tombol Sesuaikan Profil] -->
+              <div class="photo-blob-frame">
+                <img 
+                  id="profile-photo-img"
+                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" 
+                  alt="Foto Profil Diri Sendiri" 
+                  class="profile-img"
+                >
+              </div>
+
+              <!-- Floating Bottom Badge -->
+              <div class="floating-nature-badge bottom-right">
+                <div class="badge-icon-wrap">🍃</div>
+                <div>
+                  <div class="badge-text-primary">Harmoni Alam</div>
+                  <div class="badge-text-sub">Ketenangan & Pertumbuhan</div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ======================================================================
+           SLIDE 2 – ABOUT ME (Tentang Saya)
+           ====================================================================== -->
+      <section class="slide slide-2" id="slide-2" data-index="1" aria-label="Slide 2: About Me">
+        <!-- Deep Pine Canopy Background -->
+        <div class="slide-bg"></div>
+
+        <div class="slide-content-container">
+          <div class="about-grid">
+            
+            <!-- Left Column: Personal Narrative & Philosophy -->
+            <div class="about-narrative-card stagger-item delay-1">
+              <div>
+                <div class="slide-tag">02 / ABOUT ME</div>
+                <h2 class="slide-headline">Mengenal Lebih Dekat</h2>
+                
+                <p class="about-body-text">
+                  Bagi saya, keseimbangan hidup ditemukan di antara gemerisik dedaunan dan hembusan angin segar pegunungan. Saya menyukai petualangan menemukan hal-hal baru, mendalami sains, menuliskan refleksi harian, serta merajut ide-ide kreatif ke dalam karya nyata.
+                </p>
+
+                <!-- Personal Philosophy Quote Box -->
+                <div class="philosophy-quote-box">
+                  <div class="philosophy-quote">
+                    "Tumbuhlah perlahan seperti pohon tua; berakar kuat dalam kebaikan, menjulang tinggi dalam wawasan, dan menaungi siapa pun yang singgah."
+                  </div>
+                  <div class="philosophy-author">— Prinsip & Refleksi Hidup</div>
+                </div>
+              </div>
+
+              <!-- Personal Core Values -->
+              <div class="values-checklist">
+                <div class="value-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Pikiran Terbuka & Senang Belajar (Curiosity)</span>
+                </div>
+                <div class="value-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Cinta Lingkungan & Ketenangan Jiwa</span>
+                </div>
+                <div class="value-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Disiplin, Teliti & Rendah Hati</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Hobbies & Passions with Aesthetic Photo Cards -->
+            <div class="hobbies-grid stagger-item delay-2">
+
+              <!-- Hobby Card 1: Nature Photography -->
+              <div class="hobby-card">
+                <div class="hobby-img-box">
+                  <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=600&q=80" alt="Fotografi Alam">
+                  <span class="hobby-tag-badge">📷 Visual</span>
+                </div>
+                <div class="hobby-card-title">
+                  <span>Fotografi Alam</span>
+                  <span style="font-size: 1.1rem;">🌲</span>
+                </div>
+                <p class="hobby-desc">
+                  Menangkap kilau embun pagi, siluet pepohonan pinus, serta warna magis langit senja lewat lensa kamera.
+                </p>
+              </div>
+
+              <!-- Hobby Card 2: Reading in Serene Places -->
+              <div class="hobby-card">
+                <div class="hobby-img-box">
+                  <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=600&q=80" alt="Membaca Buku">
+                  <span class="hobby-tag-badge">📖 Literasi</span>
+                </div>
+                <div class="hobby-card-title">
+                  <span>Membaca & Refleksi</span>
+                  <span style="font-size: 1.1rem;">☕</span>
+                </div>
+                <p class="hobby-desc">
+                  Menghabiskan waktu dengan buku-buku sains populer, novel sastra, dan filosofi kehidupan ditemani aroma kopi hangat.
+                </p>
+              </div>
+
+              <!-- Hobby Card 3: Acoustic Music & Lo-Fi -->
+              <div class="hobby-card">
+                <div class="hobby-img-box">
+                  <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="Musik Akustik">
+                  <span class="hobby-tag-badge">🎵 Melodi</span>
+                </div>
+                <div class="hobby-card-title">
+                  <span>Musik Akustik</span>
+                  <span style="font-size: 1.1rem;">🎸</span>
+                </div>
+                <p class="hobby-desc">
+                  Memetik gitar akustik sederhana dan mendengarkan alunan indie-folk bernuansa alam yang menenangkan pikiran.
+                </p>
+              </div>
+
+              <!-- Hobby Card 4: Botany & Plant Care -->
+              <div class="hobby-card">
+                <div class="hobby-img-box">
+                  <img src="https://images.unsplash.com/photo-1463936575829-25148e1db1b8?auto=format&fit=crop&w=600&q=80" alt="Merawat Tanaman">
+                  <span class="hobby-tag-badge">🪴 Berkebun</span>
+                </div>
+                <div class="hobby-card-title">
+                  <span>Merawat Tanaman</span>
+                  <span style="font-size: 1.1rem;">🌱</span>
+                </div>
+                <p class="hobby-desc">
+                  Merawat pot-pot monstera, pakis, dan sukulen kecil di sudut jendela kamar sebagai terapi hijau harian.
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ======================================================================
+           SLIDE 3 – MY FAVORITE THINGS (Hal yang Saya Sukai)
+           ====================================================================== -->
+      <section class="slide slide-3" id="slide-3" data-index="2" aria-label="Slide 3: My Favorite Things">
+        <!-- Mountain Lake Emerald Water Background -->
+        <div class="slide-bg"></div>
+
+        <div class="slide-content-container">
+          <div class="favorites-wrapper">
+            
+            <!-- Section Centered Header -->
+            <div class="slide-header-centered stagger-item delay-1">
+              <div class="slide-tag" style="color: var(--color-sage-300);">03 / FAVORITES</div>
+              <h2 class="slide-headline" style="color: #fff;">Hal-Hal yang Membuat Hari Indah</h2>
+              <p class="slide-subtitle">
+                Koleksi sederhana dari sajian hangat, alunan melodi, kisah film, dan sudut teduh alam yang selalu menghadirkan sukacita.
+              </p>
+            </div>
+
+            <!-- Aesthetic Cards Grid (4 Cards: Makanan, Musik, Film, Tempat Favorit) -->
+            <div class="cards-carousel-container stagger-item delay-2">
+
+              <!-- Card 1: Makanan & Minuman Favorit -->
+              <div class="favorite-card">
+                <div class="favorite-img-box">
+                  <img src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=600&q=80" alt="Matcha & Roti Panggang">
+                  <div class="card-category-pill">🍽️ Makanan & Minuman</div>
+                </div>
+                <div class="favorite-card-body">
+                  <h3 class="favorite-card-title">Matcha Latte & Roti Madu</h3>
+                  <p class="favorite-card-desc">
+                    Kelembutan teh hijau murni berpadu susu oat dan roti gandum panggang dengan lelehan madu liar di pagi hari yang sejuk.
+                  </p>
+                  <div class="favorite-card-footer">
+                    <span class="tag-mood">🍵 Sarapan Pagi</span>
+                    <span>Hangat & Gurih</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2: Musik Favorit -->
+              <div class="favorite-card">
+                <div class="favorite-img-box">
+                  <img src="https://images.unsplash.com/photo-1487180144351-b8472da7d491?auto=format&fit=crop&w=600&q=80" alt="Musik Indie Folk">
+                  <div class="card-category-pill">🎵 Musik & Melodi</div>
+                </div>
+                <div class="favorite-card-body">
+                  <h3 class="favorite-card-title">Indie Folk & Suara Hujan</h3>
+                  <p class="favorite-card-desc">
+                    Lagu-lagu dari Novo Amor, Bon Iver, Fleet Foxes, dan Nadin Amizah yang mengalun syahdu ditemani rintik hujan di kaca.
+                  </p>
+                  <div class="favorite-card-footer">
+                    <span class="tag-mood">🎧 Akustik Lembut</span>
+                    <span>Menenangkan</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3: Film & Karya Seni -->
+              <div class="favorite-card">
+                <div class="favorite-img-box">
+                  <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80" alt="Studio Ghibli Movie">
+                  <div class="card-category-pill">🎬 Film & Cerita</div>
+                </div>
+                <div class="favorite-card-body">
+                  <h3 class="favorite-card-title">Karya Studio Ghibli</h3>
+                  <p class="favorite-card-desc">
+                    Karya magis seperti <em>My Neighbor Totoro</em> dan <em>The Wind Rises</em> yang menggambarkan keagungan alam dan ketulusan hati.
+                  </p>
+                  <div class="favorite-card-footer">
+                    <span class="tag-mood">🌿 Nostalgia Masa Kecil</span>
+                    <span>Menghangatkan</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 4: Tempat Favorit -->
+              <div class="favorite-card">
+                <div class="favorite-img-box">
+                  <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=600&q=80" alt="Hutan Pinus Berkabut">
+                  <div class="card-category-pill">🌲 Tempat Favorit</div>
+                </div>
+                <div class="favorite-card-body">
+                  <h3 class="favorite-card-title">Hutan Pinus Berkabut</h3>
+                  <p class="favorite-card-desc">
+                    Jalan setapak bertanah lembap dengan wangi khas resin pinus, kabut tipis turun, dan kicauan burung di pucuk pohon.
+                  </p>
+                  <div class="favorite-card-footer">
+                    <span class="tag-mood">⛰️ Alam Pegunungan</span>
+                    <span>Udara Segar</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ======================================================================
+           SLIDE 4 – CLOSING (Penutup)
+           ====================================================================== -->
+      <section class="slide slide-4" id="slide-4" data-index="3" aria-label="Slide 4: Closing">
+        <!-- Warm Mountain Sunset Glow Background -->
+        <div class="slide-bg"></div>
+
+        <div class="slide-content-container">
+          <div class="closing-container">
+            
+            <div class="closing-card stagger-item delay-1">
+              
+              <!-- Aesthetic Center Leaf Icon -->
+              <div class="closing-icon-leaf">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+              </div>
+
+              <div class="slide-tag">04 / CLOSING</div>
+              
+              <!-- Closing Heading -->
+              <h2 class="closing-headline">
+                Thank You for Visiting My Website
+              </h2>
+
+              <!-- Thoughtful Nature Closing Quote -->
+              <p class="closing-quote">
+                "Seperti daun gugur yang menyuburkan tanah untuk tunas-tunas baru, setiap perjumpaan adalah berkah yang mengajarkan kita untuk terus bertumbuh. Semoga hari-harimu senantiasa dipenuhi ketenangan, kesehatan, dan keindahan alam."
+              </p>
+
+              <!-- Interactive Send Appreciation Button -->
+              <div class="leaf-reaction-box stagger-item delay-2">
+                <button id="btn-send-leaf" class="btn-send-leaf" title="Klik untuk memberikan daun apresiasi!">
+                  <span>🍃 Beri Daun Apresiasi</span>
+                  <span id="leaf-counter-badge" class="leaf-counter-badge">128</span>
+                </button>
+                <div style="font-size: 0.78rem; color: var(--color-earth-medium);">
+                  Klik tombol di atas untuk mengirimkan salam hangat!
+                </div>
+              </div>
+
+              <!-- Social Media / Contact Links -->
+              <div class="social-links-row stagger-item delay-3">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-pill">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                  </svg>
+                  <span>@satriakiyoshi</span>
+                </a>
+
+                <button class="social-pill" data-copy="satria.kiyoshi@example.com" title="Salin Email">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect width="20" height="16" x="2" y="4" rx="2"/>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                  </svg>
+                  <span>Email Saya</span>
+                </button>
+
+                <a href="https://spotify.com" target="_blank" rel="noopener noreferrer" class="social-pill">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M8 11.5c4-1 8 0 10.5 1.5"/>
+                    <path d="M9 14.5c3-.8 6 0 8 1"/>
+                    <path d="M7 8.5c5-1.2 10 0 13 2"/>
+                  </svg>
+                  <span>Spotify Playlist</span>
+                </a>
+              </div>
+
+              <!-- Primary Action: Back to Home Slide -->
+              <div class="stagger-item delay-4" style="margin-top: 10px;">
+                <button class="btn-back-home" data-action="goto-slide" data-target-slide="0">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                  </svg>
+                  <span>Back to Home</span>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ========================================================================
+         BOTTOM NAVIGATION DOCK
+         Controls: Counter (1/4 - 4/4), Progress Segments, Prev/Next Arrows
+         ======================================================================== -->
+    <footer class="navigation-dock">
+      
+      <!-- Slide Counter & Progress -->
+      <div class="slide-indicator-group">
+        <div class="slide-counter">
+          <span class="current-num">01</span>
+          <span class="total-num"> / 04</span>
+        </div>
+
+        <!-- 4-Segment Progress Bar -->
+        <div class="progress-segments" title="Navigasi Langsung Slide">
+          <div class="progress-segment active" data-slide-index="0" title="Slide 1: Intro"></div>
+          <div class="progress-segment" data-slide-index="1" title="Slide 2: About Me"></div>
+          <div class="progress-segment" data-slide-index="2" title="Slide 3: Favorites"></div>
+          <div class="progress-segment" data-slide-index="3" title="Slide 4: Closing"></div>
+        </div>
+      </div>
+
+      <!-- Quick Jump Slide Pills (Visible on Laptop / Desktop) -->
+      <div class="slide-titles-pills">
+        <button class="slide-jump-btn active" data-slide-index="0">01. Perkenalan</button>
+        <button class="slide-jump-btn" data-slide-index="1">02. Tentang Saya</button>
+        <button class="slide-jump-btn" data-slide-index="2">03. Hal Favorit</button>
+        <button class="slide-jump-btn" data-slide-index="3">04. Penutup</button>
+      </div>
+
+      <!-- Previous & Next Navigation Controls -->
+      <div class="nav-buttons-group">
+        
+        <!-- Keyboard shortcuts hint -->
+        <div class="keyboard-hint">
+          <span class="kbd-key">←</span>
+          <span class="kbd-key">→</span>
+          <span>Navigasi</span>
+        </div>
+
+        <!-- Previous Slide Button -->
+        <button id="btn-prev" class="nav-arrow-btn" aria-label="Slide Sebelumnya" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        <!-- Next Slide Button -->
+        <button id="btn-next" class="nav-arrow-btn" aria-label="Slide Selanjutnya">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+
+      </div>
+    </footer>
+
+  </div>
+
+
+  <!-- ========================================================================
+       MODAL DRAWER: QUICK PROFILE CUSTOMIZER
+       Memudahkan pengguna langsung mengedit nama, kelas, foto diri, dan bio
+       ======================================================================== -->
+  <div id="editor-modal" class="editor-modal-backdrop">
+    <div class="editor-drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+      <div class="editor-header">
+        <h3 id="drawer-title" class="editor-title">🌿 Sesuaikan Profil</h3>
+        <button id="close-editor-btn" class="btn-close-drawer" aria-label="Tutup">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <form id="profile-customizer-form" class="editor-body">
+        
+        <!-- Field: Foto Diri -->
+        <div class="form-group">
+          <label class="form-label">Ganti Foto Diri Kamu:</label>
+          <label class="photo-uploader-box" for="input-photo">
+            <img id="photo-preview-thumb" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Preview Foto" class="photo-preview-thumb">
+            <div>
+              <div style="font-weight: 600; font-size: 0.88rem; color: var(--color-forest-dark);">Pilih Foto dari Komputer</div>
+              <div style="font-size: 0.75rem; color: var(--color-earth-medium);">Format JPG, PNG, atau WebP</div>
+            </div>
+            <input type="file" id="input-photo" accept="image/*" style="display: none;">
+          </label>
+        </div>
+
+        <!-- Field: Nama Lengkap -->
+        <div class="form-group">
+          <label class="form-label" for="input-name">Nama Lengkap / Panggilan:</label>
+          <input type="text" id="input-name" class="form-input" placeholder="Masukkan nama kamu...">
+        </div>
+
+        <!-- Field: Kelas -->
+        <div class="form-group">
+          <label class="form-label" for="input-class">Kelas / Tingkat:</label>
+          <input type="text" id="input-class" class="form-input" placeholder="Contoh: X TKJ 3">
+        </div>
+
+        <!-- Field: Asal Kota / Lokasi -->
+        <div class="form-group">
+          <label class="form-label" for="input-location">Asal Kota / Lokasi:</label>
+          <input type="text" id="input-location" class="form-input" placeholder="Contoh: Malang, Jawa Timur">
+        </div>
+
+        <!-- Field: Bio Singkat -->
+        <div class="form-group">
+          <label class="form-label" for="input-bio">Deskripsi Singkat / Bio:</label>
+          <textarea id="input-bio" class="form-textarea" rows="4" placeholder="Ceritakan sedikit tentang dirimu..."></textarea>
+        </div>
+
+        <!-- Action Buttons in Form -->
+        <div style="display: flex; gap: 10px; margin-top: 10px;">
+          <button type="submit" class="btn-primary-nature" style="width: 100%; justify-content: center;">
+            Simpan & Terapkan Perubahan
+          </button>
+        </div>
+
+        <div style="margin-top: 15px; text-align: center;">
+          <button type="button" id="btn-reset-profile" style="font-size: 0.82rem; color: var(--color-earth-medium); text-decoration: underline;">
+            Kembalikan ke Data Default
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+
+  <!-- Notification Toast -->
+  <div id="nature-toast" class="nature-toast">
+    <span>🌿</span>
+    <span class="toast-msg">Pesan notifikasi</span>
+  </div>
+
+
+  <!-- Script Controller -->
+  <script src="script.js"></script>
+</body>
+</html>
